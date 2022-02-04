@@ -1,0 +1,1 @@
+using TestEndpoint as service from '../../srv/portal';
