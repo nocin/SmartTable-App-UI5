@@ -1,91 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
-        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
-        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
-    </edmx:Reference>
-    <edmx:DataServices>
-        <Schema Namespace="TestEndpoint" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-            <EntityContainer Name="EntityContainer">
-                <EntitySet Name="Participants" EntityType="TestEndpoint.Participants"/>
-            </EntityContainer>
-            <EntityType Name="Participants">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
-                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
-                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
-                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
-                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
-                <Property Name="lastName" Type="Edm.String" MaxLength="80"/>
-                <Property Name="firstName" Type="Edm.String" MaxLength="80"/>
-                <Property Name="score" Type="Edm.Int32"/>
-            </EntityType>
-            <Annotations Target="TestEndpoint.Participants">
-                <Annotation Term="UI.Identification">
-                    <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="ID"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="UI.SelectionFields">
-                    <Collection/>
-                </Annotation>
-                <Annotation Term="UI.LineItem">
-                    <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="ID"/>
-                            <PropertyValue Property="Label" String="{i18n>ID}"/>
-                            </Record>
-                            <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" Path="lastName"/>
-                                <PropertyValue Property="Label" String="{i18n>lastName}"/>
-                                </Record>
-                                <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="score"/>
-                                    <PropertyValue Property="Label" String="{i18n>score}"/>
-                                    </Record>
-                                </Collection>
-                            </Annotation>
-                        </Annotations>
-                        <Annotations Target="TestEndpoint.Participants/createdAt">
-                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
-                            <Annotation Term="Core.Immutable" Bool="true"/>
-                            <Annotation Term="Core.Computed" Bool="true"/>
-                            <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
-                            </Annotations>
-                            <Annotations Target="TestEndpoint.Participants/createdBy">
-                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
-                                <Annotation Term="Core.Immutable" Bool="true"/>
-                                <Annotation Term="Core.Computed" Bool="true"/>
-                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
-                                    <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
-                                    </Annotations>
-                                    <Annotations Target="TestEndpoint.Participants/modifiedAt">
-                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
-                                        <Annotation Term="Core.Computed" Bool="true"/>
-                                        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
-                                        </Annotations>
-                                        <Annotations Target="TestEndpoint.Participants/modifiedBy">
-                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
-                                            <Annotation Term="Core.Computed" Bool="true"/>
-                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
-                                                <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
-                                                </Annotations>
-                                                <Annotations Target="TestEndpoint.Participants/score">
-                                                    <Annotation Term="Validation.Minimum" Int="0"/>
-                                                    <Annotation Term="Validation.Maximum" Int="500"/>
-                                                </Annotations>
-                                            </Schema>
-                                        </edmx:DataServices>
-                                    </edmx:Edmx>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="TestEndpoint" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Participants" EntityType="TestEndpoint.Participants"/>
+      </EntityContainer>
+      <EntityType Name="Participants">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false" sap:updatable="false"/>
+        <Property Name="lastName" Type="Edm.String" MaxLength="80" sap:updatable="false" sap:creatable="false" sap:label="Last nombre"/>
+        <Property Name="firstName" Type="Edm.String" MaxLength="80" sap:updatable="false"/>
+        <Property Name="score" Type="Edm.Int32" sap:updatable="true"/>
+      </EntityType>
+      <Annotations Target="TestEndpoint.Participants" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Capabilities.Updatable" Bool="false"/>
+        <Annotation Term="UI.Identification">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ID"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.SelectionFields">
+          <Collection/>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ID"/>
+              <PropertyValue Property="Label" String="ID"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="lastName"/>
+              <PropertyValue Property="Label" String="lastName"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="score"/>
+              <PropertyValue Property="Label" String="score"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="TestEndpoint.EntityContainer/Participants" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="TestEndpoint.Participants/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="TestEndpoint.Participants/lastName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.FieldControl" Int="1"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="TestEndpoint.Participants/firstName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="TestEndpoint.Participants/score" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Validation.Minimum" Int="0"/>
+        <Annotation Term="Validation.Maximum" Int="500"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

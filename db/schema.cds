@@ -8,9 +8,9 @@ using {
 } from '@sap/cds/common';
 
 context md {
-    entity Participants : managed, cuid {
-        lastName: String(80);
-        firstName: String(80);
+    entity Participants  : managed, cuid  {
+        @readonly lastName: String(80);
+        @readonly firstName: String(80);
         score: Integer @Validation.Minimum : 0 @Validation.Maximum : 500;
     }
 }

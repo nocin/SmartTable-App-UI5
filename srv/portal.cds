@@ -4,7 +4,11 @@ using {md} from '../db/schema';
 service TestEndpoint @(path : '/testendpoint') {
     @Capabilities : { Updatable: true, Insertable: false }
     @Capabilities.UpdateRestrictions: {Updatable:true}  
-    entity Participants as projection on md.Participants {*,score @sap.updatable};
+    entity Participants as projection on md.Participants {
+        @readonly ID, 
+        lastName,
+        @readonly firstName,
+        score};
 }
 
 annotate TestEndpoint.Participants with @(UI : {
@@ -16,8 +20,11 @@ annotate TestEndpoint.Participants with @(UI : {
         Label : '{i18n>ID}'
     },
         {
-        Value: lastName,
-        Label : '{i18n>lastName}' 
+        Value: firstName,
+        Label : '{i18n>firstName}' 
+    },
+            {
+        Value: lastName
     },
             {
         Value: score,
@@ -25,5 +32,13 @@ annotate TestEndpoint.Participants with @(UI : {
     }
     ]
 });
+annotate TestEndpoint.Participants {
+  lastName      @sap.updatable:false ;
+  lastName      @Common.FieldControl: 1; //#ReadOnly;
+  firstName     @sap.updatable:false @readonly;
+  lastName      @sap.creatable:false ;
+  lastName      @sap.label:'Last name Dummy' ;
+  ID            @sap.updatable:false ;
+}
 
-annotate TestEndpoint.ExamParticipants with @odata.draft.enabled;
+// annotate TestEndpoint.ExamParticipants with @odata.draft.enabled;
