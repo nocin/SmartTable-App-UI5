@@ -11,6 +11,7 @@ context md {
     entity Participants  : managed, cuid  {
         @readonly lastName: String(80);
         @readonly firstName: String(80);
+        email: String;
         score: Integer @Validation.Minimum : 0 @Validation.Maximum : 500;
     }
 }

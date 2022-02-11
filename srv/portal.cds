@@ -6,6 +6,7 @@ service TestEndpoint @(path : '/testendpoint') {
     @Capabilities.UpdateRestrictions: {Updatable:true}  
     entity Participants as projection on md.Participants {
         @readonly ID, 
+        email,
         lastName,
         @readonly firstName,
         score};
@@ -38,7 +39,7 @@ annotate TestEndpoint.Participants {
   firstName     @sap.updatable:false @readonly;
   lastName      @sap.creatable:false ;
   lastName      @sap.label:'Last name Dummy' ;
-  ID            @sap.updatable:false ;
+  ID            @sap.updatable:false;
 }
 
 // annotate TestEndpoint.ExamParticipants with @odata.draft.enabled;
