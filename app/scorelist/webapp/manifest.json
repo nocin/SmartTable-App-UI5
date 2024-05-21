@@ -11,7 +11,7 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
-        "uri": "v2/testendpoint/",
+        "uri": "odata/v2/testendpoint/",
         "type": "OData",
         "settings": {
           "annotations": [],

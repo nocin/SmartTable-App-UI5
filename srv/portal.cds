@@ -9,30 +9,32 @@ service TestEndpoint @(path : '/testendpoint') {
         email,
         lastName,
         @readonly firstName,
-        score};
+        score
+    };
 }
 
 annotate TestEndpoint.Participants with @(UI : {
     Identification  : [{Value : ID}],
     SelectionFields : [],
     LineItem        : [
-    {
-        Value: ID,
-        Label : '{i18n>ID}'
-    },
         {
-        Value: firstName,
-        Label : '{i18n>firstName}' 
-    },
-            {
-        Value: lastName
-    },
-            {
-        Value: score,
-        Label : '{i18n>score}' 
-    }
+            Value: ID,
+            Label : '{i18n>ID}'
+        },
+        {
+            Value: firstName,
+            Label : '{i18n>firstName}' 
+        },
+        {
+            Value: lastName
+        },
+        {
+            Value: score,
+            Label : '{i18n>score}' 
+        }
     ]
 });
+
 annotate TestEndpoint.Participants {
   lastName      @sap.updatable:false ;
   lastName      @Common.FieldControl: 1; //#ReadOnly;

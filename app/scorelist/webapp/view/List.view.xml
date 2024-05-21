@@ -3,27 +3,27 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-		xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:table="sap.ui.table"
 	xmlns:smartTable="sap.ui.comp.smarttable"
     displayBlock="true"
     xmlns="sap.m">
 	<App id="idAppControl">
 		<pages>
-				<Page title="{i18n>scores}">
-					<content>
-						<smartTable:SmartTable 
+			<Page title="{i18n>scores}">
+				<content>
+					<smartTable:SmartTable 
                         editTogglable="true" 
                         entitySet="Participants"
-						 app:useSmartToggle="true"
+			      		app:useSmartToggle="true"
                         showRowCount="true" 
                         enableAutoBinding="true" 
                         class="sapUiResponsiveContentPadding" 
                         tableType="Table" 
                         enableAutoColumnWidth="true">
-						</smartTable:SmartTable>
-					</content>
-				</Page>
+					</smartTable:SmartTable>
+				</content>
+			</Page>
 		</pages>
 	</App>
 </mvc:View>
